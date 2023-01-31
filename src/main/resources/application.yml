@@ -1,0 +1,44 @@
+server:
+  port: 8888
+spring:
+  servlet:
+    multipart:
+      max-file-size: 3GB
+      max-request-size: 3GB
+  redis:
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 20
+        min-idle: 5
+        max-idle: 10
+    timeout: 5000ms
+    host: ${web.hostname}
+  mail:
+    password: ONXVXWJZQYQNOKBH
+    username: shuyuzheng19@163.com
+    default-encoding: UTF-8
+    host: smtp.163.com
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://${web.hostname}:3306/blog-api-v2?charsetEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+web:
+  hostname: 127.0.0.1
+  upload-path: J:/blog/static
